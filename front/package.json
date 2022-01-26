@@ -20,6 +20,7 @@
     "@angular/router": "~13.1.0",
     "@toverux/ngx-sweetalert2": "^4.0.0",
     "font-awesome": "^4.7.0",
+    "node-forge": ">=1.0.0",
     "rxjs": "~7.4.0",
     "sweetalert2": "^11.3.8",
     "tslib": "^2.3.0",
