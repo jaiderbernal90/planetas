@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './views/app-component/app.component';
+import { PersonasListComponent } from './views/personas/pages/personas-list/personas-list.component';
+import { PlanetasListComponent } from './views/planetas/pages/planetas-list/planetas-list.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'',component:AppComponent},
+  {
+    path:'personas',
+    loadChildren: () => import('./views/personas/personas.module').then((m) => m.PersonasModule)
+  },
+  {
+    path:'planetas',
+    loadChildren: () => import('./views/planetas/planetas.module').then((m) => m.PlanetasModule)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
