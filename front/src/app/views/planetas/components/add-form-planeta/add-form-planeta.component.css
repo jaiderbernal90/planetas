@@ -1,0 +1,20 @@
+.group-form{
+    width: 50%;
+    padding: .6rem;
+    display: flex;
+    flex-direction: column;
+}
+.form-control{
+    padding: .5rem 1rem;
+    border: 1px solid rgba(204, 204, 204, 0.699);
+    margin-top: .4rem;
+    border-radius: .2rem;
+    outline: none;
+}
+.item-button{
+    justify-content: center;
+    margin-top: 1rem;
+}
+.item-button .btn{
+    padding: .5rem 3rem;
+}

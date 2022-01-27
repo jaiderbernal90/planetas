@@ -36,6 +36,7 @@
     text-decoration: none;
     color: var(--color-primary);
     transition: all .5s;
+    user-select: none;
 }
 .nav-item:hover{
     color: var(--color-secondary);
