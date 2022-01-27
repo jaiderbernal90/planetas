@@ -41,6 +41,7 @@ class PersonsController extends Controller
                 'weight' => $request->input('weight'),
                 'gender' => $request->input('gender'),
                 'date_of_birth' => $request->input('date_of_birth'),
+                'planets_id' => $request->input('planets_id'),
                 'counter' => 0
             ]);
 

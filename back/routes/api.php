@@ -29,12 +29,3 @@ $router->group(['prefix' => '/planets'], function ($router) {
     $router->post('update/{id}', [PlanetsController::class,'update']);
     $router->delete('destroy/{id}', [PlanetsController::class,'destroy']);
 });
-
-//Rutas para componente relación personas-planetas
-$router->group(['prefix' => '/relationship'], function ($router) {
-    $router->get('index', [RelationshipController::class,'index']);
-    $router->post('create', [RelationshipController::class,'create']);
-    $router->get('edit/{id}', [RelationshipController::class,'edit']);
-    $router->post('update/{id}', [RelationshipController::class,'update']);
-    $router->delete('destroy/{id}', [RelationshipController::class,'destroy']);
-});

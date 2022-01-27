@@ -13,15 +13,9 @@ class PlanetsController extends Controller
      */
     public function index()
     {
-        // $planets = Planets::get();
-
-        // $planets = Planets::select(
-        //     'planets.*',
-        //     )
-        //     ->join('persons', 'persons.idPlanet', '=', 'planets.id')
-        //     ->get();
 
         $planets = Planets::withCount(['persons'])->get();
+
         return response()->json([
             'status' => 'OK',
             'success' => true,
@@ -39,7 +33,7 @@ class PlanetsController extends Controller
             'planets.*',
             'persons.name'
             )
-            ->join('persons', 'persons.idPlanet', '=', 'planets.id')
+            ->join('persons', 'persons.planets_id', '=', 'planets.id')
             ->where('planets.id',$id)
             ->get();
         
