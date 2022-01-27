@@ -4,8 +4,10 @@
         <button class="btn btn-secondary"  [routerLink]="['/', 'personas', 'top']">TOP 3 Personas</button>
         <button class="btn btn-primary" [routerLink]="['/', 'personas', 'registrar']"  >Registrar Persona</button>
     </div>
-    <div class="container-table">
-        <app-list-personas></app-list-personas>
-    </div>
+    <ng-container class="container-table" >
+        <div *ngIf="loading">
+            <app-list-personas></app-list-personas>
+        </div>
+    </ng-container>
 
 </div>

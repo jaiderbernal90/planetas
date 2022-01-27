@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "@ng-select/ng-select": "^8.1.1",
+    "@ngx-loading-bar/http-client": "^6.0.1",
     "@toverux/ngx-sweetalert2": "^4.0.0",
     "font-awesome": "^4.7.0",
     "node-forge": ">=1.0.0",
