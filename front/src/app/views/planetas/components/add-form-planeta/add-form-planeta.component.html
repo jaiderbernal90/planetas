@@ -1,0 +1,40 @@
+<form class="form" [formGroup]="formPlanetas" (submit)="onSubmit()">
+    <div class="d-flex">
+        <div class="group-form w-100">
+            <label for="">Nombre</label>
+            <input type="text" class="form-control" formControlName="name" [class.is-invalid]="isInvalid('name')">
+        </div>
+    </div>   
+    <div class="d-flex">
+        <div class="group-form">
+            <label for="">Periodo de rotación <small>(días)</small></label>
+            <input type="text" class="form-control" formControlName="rotationPeriod" [class.is-invalid]="isInvalid('rotationPeriod')">
+        </div>
+        <div class="group-form">
+            <label for="">Diámetro <small>(km)</small></label>
+            <input type="text" class="form-control" formControlName="diameter" [class.is-invalid]="isInvalid('diameter')">
+        </div>
+    </div>    
+    <div class="d-flex">
+        <div class="group-form">
+            <label for="">Clima</label>
+            <input type="text" class="form-control" formControlName="weather" [class.is-invalid]="isInvalid('weather')">
+        </div>
+        <div class="group-form">
+            <label for="">Terreno <small>(km)</small></label>
+            <input type="text" class="form-control" formControlName="ground" [class.is-invalid]="isInvalid('ground')">
+        </div>
+    </div>      
+    <div class="d-flex item-button">
+        <button class="btn btn-primary" [disabled]="formPlanetas.invalid"  type="submit" ngxLoading>Guardar Información</button>
+    </div>    
+</form>
+
+<div *ngIf="editar && personas.length">
+    <span class="subtitle">Habitantes</span>
+    <ng-container>
+        <ul class="list-persons">
+            <li *ngFor="let persona of personas">{{ persona.name}}</li>
+        </ul>
+    </ng-container>
+</div>

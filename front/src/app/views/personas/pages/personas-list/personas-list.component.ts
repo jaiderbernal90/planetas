@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudServices } from '../../../../shared/services/crud-services';
+import { finalize } from 'rxjs/operators';
+import { PersonModel } from 'src/app/shared/interfaces/person.model';
+
 
 @Component({
   selector: 'app-personas-list',
@@ -6,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personas-list.component.css']
 })
 export class PersonasListComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(
+  ) { }
 
   ngOnInit(): void {
+   
   }
 
 }

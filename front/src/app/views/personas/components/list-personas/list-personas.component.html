@@ -8,11 +8,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="text-center">
-            <td scope="row">Juan Perez</td>
-            <td>20</td>
-            <td>Tierra</td>
-            <td><button class="btn btn-table btn-secondary"  [routerLink]="['/', 'personas', '']"> <i class="fa fa-eye"></i></button></td>
+        <tr class="text-center" *ngFor="let person of personas">
+            <td scope="row">{{person.name}}</td>
+            <td>{{person.counter}}</td>
+            <td>{{person.planetName}}</td>
+            <td><button class="btn btn-table btn-secondary"  [routerLink]="['/', 'personas', person.id]"> <i class="fa fa-eye"></i></button></td>
         </tr>
     </tbody>
 </table>
+<div class="alert-item" *ngIf="!personas.length && loading">
+    <span>No hay registros</span>
+</div>
