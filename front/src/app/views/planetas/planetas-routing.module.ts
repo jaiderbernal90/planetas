@@ -6,6 +6,7 @@ import { PlanetasListComponent } from './pages/planetas-list/planetas-list.compo
 const routes: Routes = [
   {path:'',component:PlanetasListComponent},
   {path:'registrar',component:AddPlanetasComponent},
+  {path:'planetas/:id',component:AddPlanetasComponent},
 ];
 
 @NgModule({

@@ -1,35 +1,45 @@
-<form class="form">
+<form class="form" [formGroup]="formPersonas" (submit)="onSubmit()">
     <div class="d-flex">
         <div class="group-form">
             <label for="">Nombre</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="name" [class.is-invalid]="isInvalid('name')">
         </div>
         <div class="group-form">
             <label for="">Fecha de Nacimiento</label>
-            <input type="date" class="form-control">
+            <input type="date" class="form-control" formControlName="date_of_birth" [class.is-invalid]="isInvalid('date_of_birth')">
         </div>
     </div>    
     <div class="d-flex">
         <div class="group-form">
             <label for="">Edad</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" formControlName="age" [class.is-invalid]="isInvalid('age')">
         </div>
         <div class="group-form">
-            <label for="">Peso</label>
-            <input type="text" class="form-control">
+            <label for="">Peso <small>(kg)</small></label>
+            <input type="text" class="form-control" formControlName="weight" [class.is-invalid]="isInvalid('weight')">
         </div>
     </div>    
     <div class="d-flex">
         <div class="group-form">
             <label for="">Genero</label>
-            <ng-select ></ng-select>
+            <ng-select formControlName="gender" [class.is-invalid]="isInvalid('gender')" [items]="genders" bindLabel="name" bindValue="id">
+            </ng-select>
         </div>
         <div class="group-form">
-            <label for="">Número Documento</label>
-            <input type="number" class="form-control">
+            <label for="">Altura <small>(m)</small></label>
+            <input type="text" class="form-control" formControlName="height" [class.is-invalid]="isInvalid('height')">
         </div>
     </div>    
+    <div class="d-flex">
+        <div class="group-form">
+            <label for="">Planeta</label>
+            <ng-select formControlName="planets_id" [items]="planetas" bindLabel="name" bindValue="id"
+            [class.is-invalid]="isInvalid('planets_id')">
+            </ng-select>
+        </div>
+        <div class="group-form"></div>
+    </div>
     <div class="d-flex item-button">
-        <button class="btn btn-primary">Guardar Información</button>
+        <button class="btn btn-primary" [disabled]="formPersonas.invalid"  type="submit" ngxLoading >Guardar Información</button>
     </div>    
 </form>

@@ -11,29 +11,11 @@ import { PersonModel } from 'src/app/shared/interfaces/person.model';
 })
 export class PersonasListComponent implements OnInit {
   
-  loading: boolean = false;
-  personas:PersonModel[] = [];
-
-
   constructor(
-    private crudServices: CrudServices,
   ) { }
 
   ngOnInit(): void {
-    this.getPersons();
-  }
-
-
-  getPersons(){
-    this.crudServices.getRequest('/persons/index')
-      .pipe(finalize(() => this.loading = false))
-      .subscribe((res: any) => {
-        console.log(res);
-        
-        const {personas}=res;
-        this.personas = personas;        
-        this.loading = true;
-      })
+   
   }
 
 }

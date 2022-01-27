@@ -6,7 +6,7 @@ import { PersonasListComponent } from './pages/personas-list/personas-list.compo
 const routes: Routes = [
   {path:'',component:PersonasListComponent},
   {path:'registrar',component:AddPersonasComponent},
-  {path:'registrar/:id',component:AddPersonasComponent}
+  {path:'personas/:id',component:AddPersonasComponent}
 
 ];
 

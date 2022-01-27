@@ -27,9 +27,7 @@ export class ListPlanetasComponent implements OnInit {
   getPlanets(){
     this.crudServices.getRequest('/planets/index')
       .pipe(finalize(() => this.loading = false))
-      .subscribe((res: any) => {
-        console.log(res);
-        
+      .subscribe((res: any) => {        
         const {planetas}=res;
         this.planetas = planetas;        
         this.loading = true;

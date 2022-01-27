@@ -10,6 +10,7 @@
     --color-secondary: #35858B;
     --color-third: #4FBDBA;
     --color-fourth: #727f80;
+    --danger:rgb(196, 54, 54);
 }
 *{
     font-family: var(--font-primary);
@@ -32,6 +33,12 @@
     border: .15rem solid var(--color-third);
     color: var(--color-third);
 }
+.btn:disabled:hover,.btn:disabled {
+    background: #0000000d;
+    border: .15rem solid #0000000d;
+    color: #00000069;
+    cursor: default;
+}
 .btn-primary:hover{
     background: var(--color-third);
     color: #fff;
@@ -44,6 +51,11 @@
     border: .15rem solid var(--color-fourth);
     background: var(--color-fourth);
     color: #fff;
+}
+.btn.is-invalid{
+    border: .15rem solid var(--danger);
+    background: var(--danger);
+    color: var(--danger);
 }
 .text-center{
     text-align: center;
@@ -62,3 +74,8 @@
     font-size: 1.2rem;
     margin-top: 1rem;
 }
+.subtitle{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
