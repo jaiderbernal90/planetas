@@ -6,5 +6,7 @@ export interface PersonModel {
     height:number, 
     weight:number,
     gender:string,
-    date_of_birth:Date
+    counter:string,
+    planetName?:string,
+    date_of_birth:Date,
 }

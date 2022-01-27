@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Persons;
 use App\Models\Planets;
 use Illuminate\Http\Request;
 
@@ -12,21 +13,44 @@ class PlanetsController extends Controller
      */
     public function index()
     {
-        $planets = Planets::get();
-        if (sizeof($planets)){
-            return response()->json([
-                'status' => 'OK',
-                'success' => true,
-                'planetas' => $planets
-            ]);
-        }else{
-            return response()->json([
-                'status' => 'ERROR',
-                'success' => false,
-                'message' => 'No existen planetas aún'
-            ]);
-        }
+        // $planets = Planets::get();
+
+        // $planets = Planets::select(
+        //     'planets.*',
+        //     )
+        //     ->join('persons', 'persons.idPlanet', '=', 'planets.id')
+        //     ->get();
+
+        $planets = Planets::withCount(['persons'])->get();
+        return response()->json([
+            'status' => 'OK',
+            'success' => true,
+            'planetas' => $planets
+        ]);
+
     }
+     /**
+     * Función para mostrar todas las personas registradas en ese planeta
+     */
+    public function getPersonsPlanet($id)
+    {
+
+        $planets = Planets::select(
+            'planets.*',
+            'persons.name'
+            )
+            ->join('persons', 'persons.idPlanet', '=', 'planets.id')
+            ->where('planets.id',$id)
+            ->get();
+        
+        return response()->json([
+            'status' => 'OK',
+            'success' => true,
+            'planetas' => $planets
+        ]);
+
+    }
+
 
     /**
      * Función para crear planetas

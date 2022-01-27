@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PersonModel } from 'src/app/shared/interfaces/person.model';
 
 @Component({
   selector: 'app-list-personas',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-personas.component.css']
 })
 export class ListPersonasComponent implements OnInit {
+  @Input() personas: PersonModel[] = [];
+
 
   constructor() { }
 

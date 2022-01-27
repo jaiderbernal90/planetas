@@ -12,20 +12,19 @@ class PersonsController extends Controller
      */
     public function index()
     {
-        $persons = Persons::get();
-        if (sizeof($persons)){
-            return response()->json([
-                'status' => 'OK',
-                'success' => true,
-                'personas' => $persons
-            ]);
-        }else{
-            return response()->json([
-                'status' => 'ERROR',
-                'success' => false,
-                'message' => 'No existen personas aún'
-            ]);
-        }
+
+        $persons = Persons::select(
+            'persons.*',
+            'planets.name as planetName'
+            )
+            ->leftjoin('planets', 'persons.planets_id', '=', 'planets.id')
+            ->get();
+
+        return response()->json([
+            'status' => 'OK',
+            'success' => true,
+            'personas' => $persons
+        ]);
     }
 
     /**
@@ -34,20 +33,21 @@ class PersonsController extends Controller
     public function create(Request $request)
     {
         try {
-            $persons = Persons::create([
+            Persons::create([
                 'name' => $request->input('name'),
                 'lastName' => $request->input('lastName'),
                 'age' => $request->input('age'),
                 'height' => $request->input('height'),
                 'weight' => $request->input('weight'),
                 'gender' => $request->input('gender'),
-                'date_of_birth' => $request->input('date_of_birth')
+                'date_of_birth' => $request->input('date_of_birth'),
+                'counter' => 0
             ]);
+
             return response()->json([
                 'status' => 'OK',
                 'success' => true,
                 'message' => 'Persona registrada correctamente',
-                'persona' => $persons
             ]);
         } catch (\Throwable $th) {
             return response()->json([
@@ -81,8 +81,8 @@ class PersonsController extends Controller
     public function edit($id)
     {
         $persons= new Persons;
-
         $general=$persons->find($id);
+
         if($general){
             return response()->json([
                 'status' => 'OK',
@@ -163,6 +163,7 @@ class PersonsController extends Controller
                 ]);
             }
         }
+
         return response()->json([
             'status' => 'ERROR',
             'success' => false,

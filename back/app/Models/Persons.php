@@ -9,5 +9,8 @@ class Persons extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['name', 'lastName', 'age', 'height', 'weight', 'gender', 'date_of_birth'];
+    protected $fillable = ['name', 'age', 'counter','height', 'weight', 'gender', 'planets_id','date_of_birth'];
+
+   
+    
 }

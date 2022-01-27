@@ -29,10 +29,9 @@ export class PersonasListComponent implements OnInit {
       .pipe(finalize(() => this.loading = false))
       .subscribe((res: any) => {
         console.log(res);
-        const {personas}=res;
-        this.personas = personas;
-        console.log(this.personas);
         
+        const {personas}=res;
+        this.personas = personas;        
         this.loading = true;
       })
   }
