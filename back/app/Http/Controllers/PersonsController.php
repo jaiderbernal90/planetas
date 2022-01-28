@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Persons;
+use App\Models\Planets;
 use Illuminate\Http\Request;
 
 class PersonsController extends Controller
@@ -27,6 +28,24 @@ class PersonsController extends Controller
         ]);
     }
 
+    /**
+     * Función para mostrar todas las personas registradas en base de datos
+     */
+    public function getTop3Persons()
+    {
+        $persons = Persons::select('persons.name', 'persons.counter', 'planets.name as planetName')
+        ->orderBy('counter', 'desc')
+        ->leftjoin('planets', 'persons.planets_id', '=', 'planets.id')
+        ->limit(3)
+        ->get();
+        
+        
+        return response()->json([
+            'status' => 'OK',
+            'success' => true,
+            'personas' => $persons
+        ]);
+    }
     /**
      * Función para crear personas
      */
@@ -115,7 +134,8 @@ class PersonsController extends Controller
                     'height' => $request->input('height'),
                     'weight' => $request->input('weight'),
                     'gender' => $request->input('gender'),
-                    'date_of_birth' => $request->input('date_of_birth')
+                    'date_of_birth' => $request->input('date_of_birth'),
+                    'planets_id' => $request->input('planets_id')
                 ]);
 
                 return response()->json([
@@ -139,6 +159,48 @@ class PersonsController extends Controller
         ]);
     }
 
+    /**
+     * Función para actualizar el contador
+     */
+    public function updateCounters(Request $request, $id)
+    {
+        $persons = Persons::find($id);
+
+        if(isset($persons->planets_id)){
+            $planeta = Planets::find($persons->planets_id);
+        }
+
+        if ($persons) {
+            try {
+                $persons->update([
+                    'counter' => $persons->counter+1
+                ]);
+
+                if($planeta){
+                    $planeta->update([
+                        'counter' => $planeta->counter+1
+                    ]);
+                }
+             
+                return response()->json([
+                    'status' => 'OK',
+                    'success' => true,
+                ]);
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'status' => 'ERROR',
+                    'success' => false,
+                    'message' => 'La información no pudo ser actualizada',
+                    'error' => $th
+                ]);
+            }
+        }
+        return response()->json([
+            'status' => 'ERROR',
+            'success' => false,
+            'message' => 'La persona solicitada no existe'
+        ]);
+    }
     /**
      * Función para eliminar personas de la base de datos
      */

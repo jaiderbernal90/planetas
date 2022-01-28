@@ -21,8 +21,6 @@ class CreatePersonsTable extends Migration
             $table->float('weight');
             $table->string('gender');
             $table->date('date_of_birth');
-            $table->integer('planets_id')->nullable()->unsigned();
-            $table->foreign('planets_id')->references('id')->on('planets')->onDelete('cascade');
             $table->integer('counter')->nullable();
             $table->timestamps();
         });
