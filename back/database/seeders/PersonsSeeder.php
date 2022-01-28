@@ -23,6 +23,7 @@ class PersonsSeeder extends Seeder
             'gender' => 'masculino',
             'planets_id' => 1,
             'counter' => 0,
+            'date_of_birth' => '2003-01-27',
             'created_at' => '2022-01-27 23:23:28',
             'updated_at' => '2022-01-27 23:23:28',
         ]);
@@ -35,6 +36,7 @@ class PersonsSeeder extends Seeder
             'gender' => 'masculino',
             'planets_id' => 2,
             'counter' => 2,
+            'date_of_birth' => '1992-01-27',
             'created_at' => '2022-01-27 23:23:28',
             'updated_at' => '2022-01-27 23:23:28',
         ]);
@@ -47,6 +49,7 @@ class PersonsSeeder extends Seeder
             'gender' => 'femenino',
             'planets_id' => 3,
             'counter' => 10,
+            'date_of_birth' => '1997-01-27',
             'created_at' => '2022-01-27 23:23:28',
             'updated_at' => '2022-01-27 23:23:28',
         ]);
