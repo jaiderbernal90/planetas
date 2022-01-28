@@ -20,7 +20,7 @@ class CreatePlanetsTable extends Migration
             $table->string('diameter');
             $table->string('weather');
             $table->string('ground');
-            $table->integer('contador')->nullable();
+            $table->integer('counter')->nullable();
             $table->timestamps();
         });
     }

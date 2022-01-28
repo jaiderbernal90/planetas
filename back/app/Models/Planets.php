@@ -10,7 +10,7 @@ class Planets extends Model
 {   
     use HasFactory;
 
-    protected $fillable = ['name', 'rotationPeriod', 'diameter', 'weather', 'ground'];
+    protected $fillable = ['name', 'rotationPeriod', 'diameter', 'weather', 'ground','counter'];
 
     // Relacion 1:* con planetas
     public function persons() {

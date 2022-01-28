@@ -45,8 +45,8 @@ export class AddFormPersonasComponent implements OnInit {
   isInvalid(name:any) {
     return this.formPersonas.controls[name].invalid && this.formPersonas.controls[name].touched;
   }
-
   ngOnInit(): void {
+    // Instancia el formulario
     this.formPersonas = this.formBuilder.group({
       name: ['', Validators.required],
       age: ['', Validators.required],
@@ -69,6 +69,7 @@ export class AddFormPersonasComponent implements OnInit {
 
     this.getPlanets();
   }
+
   onSubmit(){    
     this.loading = true;    
 
@@ -99,6 +100,7 @@ export class AddFormPersonasComponent implements OnInit {
       })
   }
 
+  // Obtiene los planetas
   getPlanets(){
     this.crudServices.getRequest('/planets/index')
     .pipe(finalize(() => this.loading = false))
@@ -120,12 +122,12 @@ export class AddFormPersonasComponent implements OnInit {
       this.loading = true;
     })
   }
-
+  // Actualiza el contador
   updateCounter(){
-    this.crudServices.getRequest(`/persons/edit/${this.id}`)
+    this.crudServices.getRequest(`/persons/updateCounters/${this.id}`)
     .pipe(finalize(() => this.loading = false))
     .subscribe((res: any) => {  
-      
+        
     })
   }
 

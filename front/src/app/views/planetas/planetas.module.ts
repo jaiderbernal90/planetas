@@ -10,6 +10,7 @@ import { ListTopPlanetasComponent } from './components/list-top-planetas/list-to
 import { ListPlanetasComponent } from './components/list-planetas/list-planetas.component';
 import { AddFormPlanetaComponent } from './components/add-form-planeta/add-form-planeta.component';
 import { AddPlanetasComponent } from './pages/add-planetas/add-planetas.component';
+import { PlanetasTopComponent } from './pages/planetas-top/planetas-top.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AddPlanetasComponent } from './pages/add-planetas/add-planetas.componen
     ListTopPlanetasComponent,
     ListPlanetasComponent,
     AddFormPlanetaComponent,
-    AddPlanetasComponent
+    AddPlanetasComponent,
+    PlanetasTopComponent
   ],
   imports: [
     CommonModule,

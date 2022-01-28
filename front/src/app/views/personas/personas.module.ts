@@ -12,6 +12,7 @@ import { ListPersonasComponent } from './components/list-personas/list-personas.
 import { ListTopPersonasComponent } from './components/list-top-personas/list-top-personas.component';
 import { AddFormPersonasComponent } from './components/add-form-personas/add-form-personas.component';
 import { AddPersonasComponent } from './pages/add-personas/add-personas.component';
+import { PersonasTopComponent } from './pages/personas-top/personas-top.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AddPersonasComponent } from './pages/add-personas/add-personas.componen
     ListPersonasComponent,
     ListTopPersonasComponent,
     AddFormPersonasComponent,
-    AddPersonasComponent
+    AddPersonasComponent,
+    PersonasTopComponent
   ],
   imports: [
     CommonModule,

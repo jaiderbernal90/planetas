@@ -6,4 +6,5 @@ export interface PlanetModel {
     weather:number,
     ground:string,   
     persons_count?:number 
+    counter?:number 
 }

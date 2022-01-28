@@ -1,4 +1,16 @@
 .container-title{
     padding: 2rem ;
+}
+.info span{
+    display: block;
+    margin: .5rem 0;
+}
+.imagen{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+.img-fluid-index{
+    width: 35%;
 }

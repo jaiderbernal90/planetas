@@ -48,6 +48,7 @@ export class AddFormPlanetaComponent implements OnInit {
         this.getPlaneta(this.id)
         this.editar = true;
         this.getPersons();
+        this.updateCounter()
       }
     });
   }
@@ -98,4 +99,13 @@ export class AddFormPlanetaComponent implements OnInit {
       this.loading = true;
     })
   }
+
+  updateCounter(){
+    this.crudServices.getRequest(`/planets/updateCounters/${this.id}`)
+    .pipe(finalize(() => this.loading = false))
+    .subscribe((res: any) => {  
+        
+    })
+  }
+
 }

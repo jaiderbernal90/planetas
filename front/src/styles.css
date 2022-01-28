@@ -10,7 +10,7 @@
     --color-secondary: #35858B;
     --color-third: #4FBDBA;
     --color-fourth: #727f80;
-    --danger:rgb(196, 54, 54);
+    --danger:rgb(235 0 0);
 }
 *{
     font-family: var(--font-primary);
@@ -78,4 +78,13 @@
     font-size: 1.2rem;
     font-weight: 600;
 }
+.bg-danger{
+    border: .15rem solid var(--danger);
+    color: var(--danger);
+}
 
+.bg-danger:hover{
+    background: var(--danger);
+    border: .15rem solid var(--danger);
+    color: #fff;
+}

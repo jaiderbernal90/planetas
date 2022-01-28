@@ -44,7 +44,23 @@ class PlanetsController extends Controller
         ]);
 
     }
-
+    /**
+     * Función para mostrar el top de planetas
+     */
+    public function getTop3Planets()
+    {
+        $planets = Planets::select('planets.name', 'planets.counter')
+        ->orderBy('counter', 'desc')
+        ->limit(3)
+        ->get();
+        
+        
+        return response()->json([
+            'status' => 'OK',
+            'success' => true,
+            'planetas' => $planets
+        ]);
+    }
 
     /**
      * Función para crear planetas
@@ -57,7 +73,8 @@ class PlanetsController extends Controller
                 'rotationPeriod' => $request->input('rotationPeriod'),
                 'diameter' => $request->input('diameter'),
                 'weather' => $request->input('weather'),
-                'ground' => $request->input('ground')
+                'ground' => $request->input('ground'),
+                'counter' => 0
             ]);
             return response()->json([
                 'status' => 'OK',
@@ -135,6 +152,40 @@ class PlanetsController extends Controller
                     'status' => 'OK',
                     'success' => true,
                     'message' => 'Información actualizada correctamente'
+                ]);
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'status' => 'ERROR',
+                    'success' => false,
+                    'message' => 'La información no pudo ser actualizada',
+                    'error' => $th
+                ]);
+            }
+        }
+        return response()->json([
+            'status' => 'ERROR',
+            'success' => false,
+            'message' => 'El planeta solicitado no existe'
+        ]);
+    }
+
+        
+    /**
+     * Función para actualizar el contador
+     */
+    public function updateCounters(Request $request, $id)
+    {
+        $planets = Planets::find($id);
+
+        if ($planets) {
+            try {
+                $planets->update([
+                    'counter' => $planets->counter+1
+                ]);
+
+                return response()->json([
+                    'status' => 'OK',
+                    'success' => true,
                 ]);
             } catch (\Throwable $th) {
                 return response()->json([

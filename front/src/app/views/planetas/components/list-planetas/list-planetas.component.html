@@ -2,7 +2,7 @@
     <thead>
         <tr class="text-center">
             <th scope="col">Nombre</th>
-            <th scope="col">Cantidad de personas</th>
+            <th scope="col">Cantidad de habitantes</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -10,10 +10,13 @@
         <tr class="text-center" *ngFor="let planeta of planetas">
             <td scope="row">{{planeta.name}}</td>
             <td>{{ planeta.persons_count }}</td>
-            <td><button class="btn btn-table btn-secondary"  [routerLink]="['/', 'planetas', planeta.id]"> <i class="fa fa-eye"></i></button></td>
+            <td>
+                <button class="btn btn-table btn-secondary"  [routerLink]="['/', 'planetas', planeta.id]"> <i class="fa fa-eye"></i></button>
+                <button class="btn btn-table btn-secondary bg-danger" (click)="actionDelete(planeta)"> <i class="fa fa-trash"></i></button>
+            </td>
         </tr>
     </tbody>
 </table>
-<div class="alert-item" *ngIf="!planetas.length && loading">
+<div class="alert-item" *ngIf="planetas.length == 0 && !loading">
     <span>No hay registros</span>
 </div>
